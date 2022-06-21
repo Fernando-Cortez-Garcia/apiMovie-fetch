@@ -11,8 +11,10 @@ btnSiguiente.addEventListener('click', () => {
     })
     //para regresar a la pagina anterior de peliculas
 btnAnterior.addEventListener('click', () => {
-    pagina -= 1;
-    cargarPeliculas();
+    if (pagina > 1) {
+        pagina -= 1;
+        cargarPeliculas();
+    }
 })
 
 const cargarPeliculas = async() => {
