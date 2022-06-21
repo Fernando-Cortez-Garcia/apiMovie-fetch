@@ -21,7 +21,7 @@ const cargarPeliculas = async() => {
 
     try {
         const respuesta = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=a9f8786373b5ffece405294946395656&language=es-MX&page=${pagina}`);
-        console.log(respuesta);
+
         if (respuesta.status === 200) {
             const datos = await respuesta.json();
             //Creando las tarjetas
@@ -32,24 +32,16 @@ const cargarPeliculas = async() => {
                     <img class="poster" src="https://image.tmdb.org/t/p/w500/${pelicula.poster_path}">   
                     <h3 class="titulo">${pelicula.title}</h3>
                    </div>
-                
                 `;
-
             });
             document.getElementById('contenedor').innerHTML = peliculas;
-
         } else if (respuesta.status === 401) {
             console.log("Error: Llave invalida");
         } else if (respuesta.status === 404) {
             console.log('Error:Pelicula no encontrada');
         }
-
     } catch (err) {
-
         console.log(err);
-
     }
 }
-
-
 cargarPeliculas();
